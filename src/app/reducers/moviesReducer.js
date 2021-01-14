@@ -10,7 +10,10 @@ export default function moviesReducer(state = null, action) {
             return state.map((movie) => {
                 if (movie.id === action.id) {
                     return {
-                        ...movie, likes: movie.likes + 1
+                        ...movie,
+                        likes: movie.likes + 1,
+                        likesActive: !movie.likesActive,
+                        dislikesActive: movie.likesActive
                     };
                 }
                 return {...movie};
@@ -19,7 +22,10 @@ export default function moviesReducer(state = null, action) {
             return state.map((movie) => {
                 if (movie.id === action.id) {
                     return {
-                        ...movie, dislikes: movie.dislikes + 1
+                        ...movie,
+                        dislikes: movie.dislikes + 1,
+                        dislikesActive: !movie.dislikesActive,
+                        likesActive: movie.dislikesActive
                     };
                 }
                 return {...movie};

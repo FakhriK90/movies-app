@@ -56,7 +56,9 @@ export const CardLikes = styled.span`
     text-align: center;
     i {
         color:${colors.tertiaryColor};
-        opacity: 0.6;
+        opacity: ${props => props.active ? 1 : 0.5};
+        transform: scale(${props => props.active ? 1.3 : ''});
+        pointer-events: ${props => props.active ? 'none' : 'auto'};
         padding-right: 10px;
         &:hover {
             transform: scale(1.3);

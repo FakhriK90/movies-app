@@ -14,6 +14,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 2,
     dislikes: 0,
+    likesActive: false,
     visible: true
   }, {
     id: '3',
@@ -22,6 +23,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 3,
     dislikes: 1,
+    likesActive: false,
     visible: true
   }, {
     id: '4',
@@ -30,6 +32,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 6,
     dislikes: 6,
+    likesActive: false,
     visible: true
   }, {
     id: '5',
@@ -38,6 +41,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 16,
     dislikes: 2,
+    likesActive: false,
     visible: true
   }, {
     id: '6',
@@ -46,6 +50,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 11,
     dislikes: 3,
+    likesActive: false,
     visible: true
   }, {
     id: '7',
@@ -54,6 +59,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 12333,
     dislikes: 32,
+    likesActive: false,
     visible: true
   }, {
     id: '8',
@@ -62,6 +68,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 2,
     dislikes: 1,
+    likesActive: false,
     visible: true
   }, {
     id: '9',
@@ -70,6 +77,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 2,
     dislikes: 1,
+    likesActive: false,
     visible: true
   }, {
     id: '10',
@@ -78,6 +86,7 @@ const movies = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel maximus nunc. Sed suscipit orci in eros vestibulum interdum. Vivamus pretium id quam in tempus. Fusce pellentesque, arcu quis semper scelerisque, enim metus congue lacus, a cursus lectus elit quis lectus. In hendrerit orci accumsan, placerat est convallis, eleifend sapien. Suspendisse justo odio, aliquam in tellus id, posuere consequat diam. Aliquam erat volutpat. In non nibh iaculis, ultrices tellus a, scelerisque turpis.',
     likes: 22,
     dislikes: 12,
+    likesActive: false,
     visible: true
   },
 ]

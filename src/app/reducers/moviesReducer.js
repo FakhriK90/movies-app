@@ -1,8 +1,7 @@
-import {INITIAL} from "../components/actions/moviesActions";
 
 export default function moviesReducer(state = null, action) {
     switch (action.type) {
-        case INITIAL:
+        case 'initial':
             return [...action.data];
         case 'remove':
             return state.filter((movie) => movie.id !== action.id);

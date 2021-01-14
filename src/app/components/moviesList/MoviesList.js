@@ -1,12 +1,9 @@
 import React, {useReducer, useState} from "react";
 import {movies$} from "../../movies";
-import {fetchInitial} from "../actions/moviesActions";
 import moviesReducer from "../../reducers/moviesReducer";
 import {Grid, Title, Card, CardCategory, CardInfo, CardLikes, CardTitle, CardDelete, CardSummary } from "./StylesForMoviesList";
 import SelectCustom from "../selectCustom/SelectCustom";
 import PaginationCustom from "../paginationCustom/PaginationCustom";
-
-
 
 const MoviesList = () => {
     const [state, dispatch] = useReducer(moviesReducer, []);
@@ -25,7 +22,7 @@ const MoviesList = () => {
         const fetchMovies = async () => {
             return await movies$;
         };
-        fetchMovies().then(data => dispatch(fetchInitial(data)));
+        fetchMovies().then(data => dispatch({type: 'initial', data}));
     }, []);
 
     return (

@@ -1,15 +1,17 @@
 import React, {useReducer, useState} from "react";
-import moviesReducer, {fetchInitial} from "../../reducers/moviesReducer";
 import {movies$} from "../../movies";
+import {fetchInitial} from "../actions/moviesActions";
+import moviesReducer from "../../reducers/moviesReducer";
 import {Grid, Title, Card, CardCategory, CardInfo, CardLikes, CardTitle, CardDelete, CardSummary } from "./StylesForMoviesList";
 import SelectCustom from "../selectCustom/SelectCustom";
 import PaginationCustom from "../paginationCustom/PaginationCustom";
 
 
+
 const MoviesList = () => {
     const [state, dispatch] = useReducer(moviesReducer, []);
     const [ activePage, setCurrentPage ] = useState( 1 );
-    const [moviesPerPage, setMoviesPerPage] = useState(4);
+    const [moviesPerPage, setMoviesPerPage] = useState('4');
     const categoryArr = state.map(movie => movie.category);
     const indexOfLastMovie  = activePage * moviesPerPage;
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
@@ -53,8 +55,7 @@ const MoviesList = () => {
 
                     })
                 }
-                <PaginationCustom state={state} activePage={activePage} handlePageChange={handlePageChange}/>
-                <p>{moviesPerPage} /page</p>
+                <PaginationCustom state={state} activePage={activePage} handlePageChange={handlePageChange} handleNumberMovies={setMoviesPerPage}/>
             </Grid>
         </>
     )

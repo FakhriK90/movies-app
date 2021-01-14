@@ -5,8 +5,8 @@ export const SelectStyled = styled.div`
   grid-column: 1/-1;
   position: relative;
   line-height: 3;
-  background: #FFF;
-  border: 1px solid #1e1b26;
+  background: ${colors.white};
+  border: 1px solid ${colors.primaryColor};
   overflow: hidden;
   border-radius: 5px;
   font-size: 1.6rem;
@@ -21,8 +21,8 @@ export const SelectStyled = styled.div`
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0 1em;
-      background: #1e1b26;
+      padding: 0 20px;
+      background: ${colors.primaryColor};
       cursor: pointer;
       pointer-events: none;
       transition: .25s all ease;
@@ -31,15 +31,6 @@ export const SelectStyled = styled.div`
     color: ${colors.tertiaryColor};
   }
   select {
-      appearance: none;
-      outline: 0;
-      box-shadow: none;
-      border: 0 !important;
-      background-image: none;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
       color: ${colors.secondaryColor};
-      padding-left: 10px;
   }
 `

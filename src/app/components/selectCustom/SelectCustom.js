@@ -1,6 +1,5 @@
 import React from "react";
-import {SelectStyled } from "./StylesForSelectCustom";
-
+import { SelectStyled } from "./StylesForSelectCustom";
 
 const SelectCustom = ({categoryArr, dispatch}) => {
     return (

@@ -1,15 +1,5 @@
-// actions
-const INITIAL = "INITIAL";
+import {INITIAL} from "../components/actions/moviesActions";
 
-// action creators
-export function fetchInitial(data) {
-    return {
-        type: INITIAL,
-        data
-    }
-}
-
-//reducer
 export default function moviesReducer(state = null, action) {
     switch (action.type) {
         case INITIAL:

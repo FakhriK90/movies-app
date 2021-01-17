@@ -1,13 +1,21 @@
+import {createSlice} from '@reduxjs/toolkit';
 
-export default function moviesReducer(state = null, action) {
-    switch (action.type) {
-        case 'initial':
-            return [...action.data];
-        case 'remove':
-            return state.filter((movie) => movie.id !== action.id);
-        case 'like':
+const initialState = [];
+
+const moviesSlice = createSlice({
+    name: 'movies',
+    initialState,
+    reducers: {
+        moviesInitial(state, action) {
+            return [...action.payload];
+        },
+        moviesRemove(state, action) {
+            console.log(action);
+            return state.filter((movie) => movie.id !== action.payload.id);
+        },
+        moviesLikes(state, action) {
             return state.map((movie) => {
-                if (movie.id === action.id) {
+                if (movie.id === action.payload.id) {
                     return {
                         ...movie,
                         likes: movie.likes + 1,
@@ -17,9 +25,10 @@ export default function moviesReducer(state = null, action) {
                 }
                 return {...movie};
             });
-        case 'dislike':
+        },
+        moviesDislikes(state, action) {
             return state.map((movie) => {
-                if (movie.id === action.id) {
+                if (movie.id === action.payload.id) {
                     return {
                         ...movie,
                         dislikes: movie.dislikes + 1,
@@ -29,18 +38,20 @@ export default function moviesReducer(state = null, action) {
                 }
                 return {...movie};
             });
-        case 'filter':
-            return state.map((movie) => {
-                movie.visible = true;
-                if (movie.category !== action.category && action.category !== 'default') {
-                    return {
-                        ...movie, visible: false
-                    }
-                }
-                return {...movie};
-            });
-        default:
-            return state;
+        },
+        moviesFilter(state, action) {
+            let newState = state.map(movie => ({...movie}));
+            let filterMovies = newState.filter((movie) => movie.category === action.payload.category);
+            if (action.payload.category) {
+                newState.filteredMovies = filterMovies;
+            } else {
+                newState.filteredMovies = newState;
+            }
+            return newState;
+        },
     }
+});
 
-}
+export const { moviesInitial, moviesRemove, moviesLikes, moviesDislikes, moviesFilter } = moviesSlice.actions
+
+export default moviesSlice.reducer

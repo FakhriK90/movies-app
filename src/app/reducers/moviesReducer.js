@@ -16,19 +16,32 @@ const moviesSlice = createSlice({
         moviesLikes(state, action) {
             return state.map((movie) => {
                 if (movie.id === action.payload.id) {
-                    return {
-                        ...movie,
-                        likes: movie.likes + 1,
-                        likesActive: !movie.likesActive,
-                        dislikesActive: movie.likesActive
-                    };
-                }
-                return {...movie};
-            });
-        },
-        moviesDislikes(state, action) {
-            return state.map((movie) => {
-                if (movie.id === action.payload.id) {
+                    if (action.payload.type === 'likes') {
+                        if (movie.dislikesActive) {
+                            return {
+                                ...movie,
+                                likes: movie.likes + 1,
+                                dislikes: movie.dislikes - 1,
+                                likesActive: !movie.likesActive,
+                                dislikesActive: movie.likesActive
+                            };
+                        }
+                        return {
+                            ...movie,
+                            likes: movie.likes + 1,
+                            likesActive: !movie.likesActive,
+                            dislikesActive: movie.likesActive
+                        };
+                    }
+                    if (movie.likesActive) {
+                        return {
+                            ...movie,
+                            dislikes: movie.dislikes + 1,
+                            likes: movie.likes -1,
+                            dislikesActive: !movie.dislikesActive,
+                            likesActive: movie.dislikesActive
+                        };
+                    }
                     return {
                         ...movie,
                         dislikes: movie.dislikes + 1,

@@ -51,8 +51,8 @@ const MoviesList = () => {
                                     <h3>Summary</h3>
                                     <p>{movie.summary}</p>
                                 </CardSummary>
-                                <CardLikes active={movie.likesActive}><i onClick={() => dispatch(moviesLikes({id: movie.id}))} className="fa fa-thumbs-up"></i>{movie.likes}</CardLikes>
-                                <CardLikes active={movie.dislikesActive}><i onClick={() => dispatch(moviesDislikes({id: movie.id}))} className="fa fa-thumbs-down"></i> {movie.dislikes}</CardLikes>
+                                <CardLikes active={movie.likesActive}><i onClick={() => dispatch(moviesLikes({id: movie.id, type: 'likes'}))} className="fa fa-thumbs-up"></i>{movie.likes}</CardLikes>
+                                <CardLikes active={movie.dislikesActive}><i onClick={() => dispatch(moviesLikes({id: movie.id, type: 'dislikes'}))} className="fa fa-thumbs-down"></i> {movie.dislikes}</CardLikes>
                             </Card>
                         )
                     })

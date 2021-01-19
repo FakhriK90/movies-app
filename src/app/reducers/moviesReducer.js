@@ -10,7 +10,6 @@ const moviesSlice = createSlice({
             return [...action.payload];
         },
         moviesRemove(state, action) {
-            console.log(action);
             return state.filter((movie) => movie.id !== action.payload.id);
         },
         moviesLikes(state, action) {

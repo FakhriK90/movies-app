@@ -1,25 +1,21 @@
 import React, {useEffect, useReducer, useState} from "react";
 import {movies$} from "../../movies";
 import moviesReducer from "../../reducers/moviesReducer";
-import {moviesInitial, moviesRemove, moviesLikes, moviesDislikes} from "../../reducers/moviesReducer";
 import {Grid, Title, Card, CardCategory, CardInfo, CardLikes, CardTitle, CardDelete, CardSummary } from "./StylesForMoviesList";
 import SelectCustom from "../selectCustom/SelectCustom";
 import PaginationCustom from "../paginationCustom/PaginationCustom";
 
 
 const MoviesList = () => {
-    const [state, dispatch] = useReducer(moviesReducer, []);
+    const [state, dispatch] = useReducer(moviesReducer, {allMovies: [], filteredMovies: []});
     const [activePage, setCurrentPage] = useState( 1 );
-    const [moviesPerPage, setMoviesPerPage] = useState('4');
-    const filteredCategory = Array.from(new Set(state.map(movie => movie.category)));
-    const filteredMovies = state.filteredMovies;
+    const [moviesPerPage, setMoviesPerPage] = useState(4);
+    const filteredCategory = Array.from(new Set(state.allMovies.map(movie => movie.category)));
     const indexOfLastMovie  = activePage * moviesPerPage;
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-    let currentMovies = state.slice( indexOfFirstMovie, indexOfLastMovie );
-
-    if (filteredMovies && filteredMovies.length !== 0) {
-      currentMovies = filteredMovies.slice( indexOfFirstMovie, indexOfLastMovie );
-    }
+    const currentMovies = state.filteredMovies && state.filteredMovies.length !== 0 ?
+        state.filteredMovies.slice( indexOfFirstMovie, indexOfLastMovie ) :
+        state.allMovies.slice( indexOfFirstMovie, indexOfLastMovie );
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -30,7 +26,7 @@ const MoviesList = () => {
         const fetchMovies = async () => {
             return await movies$;
         };
-        fetchMovies().then(data => dispatch(moviesInitial(data)));
+        fetchMovies().then(data => dispatch({type:'initial', data}));
     }, []); // [] as a dependency run only once after the first render
 
     return (
@@ -42,7 +38,7 @@ const MoviesList = () => {
                     currentMovies.map(movie => {
                         return (
                             <Card key={movie.id}>
-                                <CardDelete onClick={() => dispatch(moviesRemove({id: movie.id}))}></CardDelete>
+                                <CardDelete onClick={() => dispatch({type:'remove', id: movie.id})}></CardDelete>
                                 <CardInfo>
                                     <CardTitle>{movie.title}</CardTitle>
                                     <CardCategory>{movie.category}</CardCategory>
@@ -51,13 +47,13 @@ const MoviesList = () => {
                                     <h3>Summary</h3>
                                     <p>{movie.summary}</p>
                                 </CardSummary>
-                                <CardLikes active={movie.likesActive}><i onClick={() => dispatch(moviesLikes({id: movie.id, type: 'likes'}))} className="fa fa-thumbs-up"></i>{movie.likes}</CardLikes>
-                                <CardLikes active={movie.dislikesActive}><i onClick={() => dispatch(moviesLikes({id: movie.id, type: 'dislikes'}))} className="fa fa-thumbs-down"></i> {movie.dislikes}</CardLikes>
+                                <CardLikes active={movie.likesActive}><i onClick={() => dispatch({ type:'likes', id: movie.id})} className="fa fa-thumbs-up"></i>{movie.likes}</CardLikes>
+                                <CardLikes active={movie.dislikesActive}><i onClick={() => dispatch({ type:'dislikes', id: movie.id})} className="fa fa-thumbs-down"></i> {movie.dislikes}</CardLikes>
                             </Card>
                         )
                     })
                 }
-                <PaginationCustom state={filteredMovies && filteredMovies.length !== 0 ? filteredMovies : state} activePage={activePage} handlePageChange={handlePageChange} handleNumberMovies={setMoviesPerPage}/>
+                <PaginationCustom state={state.filteredMovies && state.filteredMovies.length !== 0 ? state.filteredMovies : state.allMovies} activePage={activePage} handlePageChange={handlePageChange} handleNumberMovies={setMoviesPerPage}/>
             </Grid>
         </>
     )

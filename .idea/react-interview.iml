@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="stripeNavigation" />
     <orderEntry type="module" module-name="stripeNavigation" />
+    <orderEntry type="module" module-name="prepAcademy-test" />
   </component>
 </module>

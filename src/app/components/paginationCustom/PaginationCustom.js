@@ -2,15 +2,17 @@ import React from "react";
 import Pagination from "react-js-pagination";
 import {PaginationStyled, SelectForPaginationContainerStyled, SelectForPaginationStyled} from "./StylesForPaginationCustom";
 
+const itemsCountPerPage = 4;
+const pageRangeDisplayed = 3;
 
 const PaginationCustom = ({state, activePage, handlePageChange, handleNumberMovies}) => {
     return (
         <PaginationStyled>
             <Pagination
                 activePage={ activePage }
-                itemsCountPerPage={ 4 }
+                itemsCountPerPage={ itemsCountPerPage }
                 totalItemsCount={ state.length }
-                pageRangeDisplayed={ 3 }
+                pageRangeDisplayed={ pageRangeDisplayed }
                 onChange={ handlePageChange }
             />
             <SelectForPaginationContainerStyled>

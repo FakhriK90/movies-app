@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.idea/modules.xml
+.idea/react-interview.iml
+.idea/vcs.xml
+
